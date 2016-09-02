@@ -1,0 +1,12 @@
+ELIMINA EMAIL IN CODA
+mailq | awk '$7 ~ /bslbounce2@gmail.com$/ { print $1 }' | tr -d '*!' | postsuper -d -
+
+ELIMINA MESSAGGI DEFERRED
+postsuper -d deferred
+find /var/spool/postfix/deferred -type f | sed 's;.*/;;' | postsuper -d - 
+
+EMAIL IN USCITA
+qshape active
+
+EMAIL DEFERITE
+qshape deferred

@@ -1,0 +1,13 @@
+#elenco regole
+iptables -L
+
+#salvare regole
+service iptables save
+
+#eliminare regola 
+iptables -D INPUT 3  #(viene eliminata la terza riga di input)
+
+#aggiungere regole per MySQL (abilitare solo aluni ip da remoto)
+iptables -A INPUT -p tcp -s 127.0.0.1 --dport 3306 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT  #fondamentale, altrimenti si bloccano le connessioni locali
+iptables -A INPUT -p tcp -s 172.21.30.134 --dport 3306 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A INPUT -p tcp --dport 3306 -j DROP

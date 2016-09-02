@@ -1,0 +1,22 @@
+-- NUOVA CARTELLA CONDIVISA
+nano /etc/samba/smb.conf
+-- aggiungere queste righe 
+[nome_condivisione]
+path = /path_condivisione
+guest ok = no
+read only = yes
+
+service smb restart
+
+smbpasswd -a root
+
+
+-- LEGGERE CARTELLA CONDIVISA
+mkdir /mnt/path_locale
+mount -t cifs -o username=root //INDIRIZZO/path /mnt/path_locale
+
+mount.cifs //192.168.0.50/Andrea/_ARCHIMEDE /mnt/NAS/ -o rw
+#senza autenticazione aggiungere guest
+mount.cifs //192.168.0.50/Andrea/DEMO /mnt/nas -o guest,rw,uid=1000,gid=1000,nounix,iocharset=utf8,file_mode=0777,dir_mode=0777
+
+umount -f /mnt/nfs/home/

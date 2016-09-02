@@ -1,0 +1,51 @@
+== CONTROLLARE SITUAZIONE ARCHIVIO ==
+git status
+
+=== SCARICARE NEL REPO LOCALE GLI AGGIORNAMENTI DA GITHUB ==
+git pull origin master
+
+== CREARE UN NUOVO BRANCH SU GITHUB ==
+git branch <name_of_your_new_branch>
+git push origin <name_of_your_new_branch>
+
+== CREARE UN NUOVO TAG SU GITHUB ==
+git tag -a <name> -m 'text message'
+git tag 0.1.0
+git push --tags
+git push origin --tags
+
+== CANCELLARE UN TAG SU GITHUB
+git tag -d <name>
+git push origin :refs/tags/<name>
+
+== COMMITTARE MODIFICHE SU GITHUB ==
+git add <filename1>
+git add <filename2> (oppure git add --all)
+git commit -m "text message"
+git push origin master
+
+== CREARE NUOVO PROGETTO ==
+git init
+git remote add origin https://github.com/andreaval/IFRAMEplus.git
+
+
+== STEP BASE ==
+cd dir_progetto
+git init
+git status
+nano nuovofile.txt //ho creato un nuovo file
+git add nuovofile.txt //aggiunto file nella Staging Area
+git commit -m "Il mio primo commit" //committato nel repository
+git log //tutti i commit fatti in passato
+git remote add origin https://url_sito/repo.git
+git push -u origin master //inserisci i commit sul REPO remoto (l'opzione -u ricorda i parametri per i prossimi push in modo da poter fare solo git push)
+git pull origin master //aggiorna il nostro REPO locale
+git diff HEAD //controlla differenze con il REPO remoto
+git diff --staged //controlla differenze con i file nella staging area
+git reset file.txt //rimuove il file dalla staging area
+git checkout -- octocat.txt //torna alla precedente versione del file
+git branch clean_up //crea un nuovo branch chiamato clean_up
+git checkout clean_up //si passa dal repo master al branch clean_up
+git checkout master //ritorna al master
+git merge clean_up //merge delle modifiche di clean_up dentro master
+git branch -d clean_up //cancella il branch clean_up

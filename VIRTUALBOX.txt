@@ -1,0 +1,39 @@
+#avvia virtual machine
+VBoxManage startvm NOMEVM -t headless
+
+#spegnere virtual machine
+VBoxManage controlvm NOMEVM poweroff
+
+#riavviare virtual machine
+VBoxManage controlvm NOMEVM reset
+
+#modificare quantità di ram
+VBoxManage modifyvm NOMEVM --memory 512
+
+#visualizzare info virtual machine
+VBoxManage showvminfo NOMEVM
+
+#elenco virtual machine avviate
+VBoxManage list runningvms
+
+#elenco virtual machine create
+VBoxManage list vms
+
+#clonare disco
+VBoxManage clonevdi PATH_ORIGINALE_VDI PATH_COPIA_VDI
+
+#elenco dischi registrati
+VBoxManage list hdds
+
+
+##CAMBIARE DIMENSIONE DISCO MACCHINA VIRTUALE
+##PROCEDURA PER CENTOS 7
+yum install ssm
+fdisk /device/sda 
+> n #dare sempre invio ed infine il comando w (verrà creata una nuova partizione)
+shutdown -r now
+mkfs.xfs -f /dev/sda3
+ssm add -p centos /dev/sda3
+ssm resize -s+9000M /dev/centos/root
+
+

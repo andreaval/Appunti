@@ -1,0 +1,14 @@
+#da locale a remota
+rsync -a ~/dir1 username@remote_host:destination_directory
+
+#da remota a locale
+rsync -a username@remote_host:/home/username/dir1 place_to_sync_on_local_machine
+
+
+# l'opzione --delete cancella, nel destinatario, i files non più presenti nel sorgente
+
+
+#per salvare ssh key
+
+ssh-keygen
+ssh-copy-id -i ~/.ssh/id_rsa.pub 192.168.0.34

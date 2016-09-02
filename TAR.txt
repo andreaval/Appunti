@@ -1,0 +1,7 @@
+COMPRIMERE ARCHIVI
+tar -czvf file.tar.gz cartella_da_comprimere
+tar -cjvf file.tar.bz2 cartella_da_comprimere
+
+DECOMPRIMERE ARCHIVI
+tar jxvf nome.tar.bz2
+tar zxvf nome.tar.gz

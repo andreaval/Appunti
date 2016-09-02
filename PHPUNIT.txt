@@ -1,0 +1,7 @@
+#lanciare test PHPUnit su Mac
+
+#php70
+/usr/local/opt/php70/bin/php /usr/local/lib/composer/vendor/phpunit/phpunit/phpunit --bootstrap /Users/andrea/Sviluppo/Source/BlackAnt/_test/bootstrap.php /Users/andrea/Sviluppo/Source/BlackAnt/_test/DirTest.php
+
+#php56
+/usr/bin/php /usr/local/lib/composer/vendor/phpunit/phpunit/phpunit --bootstrap /Users/andrea/Sviluppo/Source/BlackAnt/_test/bootstrap.php /Users/andrea/Sviluppo/Source/BlackAnt/_test/DirTest.php
