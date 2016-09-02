@@ -1,0 +1,5 @@
+#RIPRISTINO DUMP
+mysql -u root -p -h localhost crm_fimmg < data.sql 
+
+#ESTRAZIONE DEI DATI DI UNA TABELLA DA UN FILE DUMP
+sed -n -e '/DROP TABLE.*`rubrica_messaggi`/,/UNLOCK TABLES/p' mydump.sql > tabledump.sql
