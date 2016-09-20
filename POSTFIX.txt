@@ -1,5 +1,6 @@
 ELIMINA EMAIL IN CODA
 mailq | awk '$7 ~ /bslbounce2@gmail.com$/ { print $1 }' | tr -d '*!' | postsuper -d -
+mailq | awk 'BEGIN { RS = "" } /@ideabiodistribution\.com$/ { print $1 }' | tr -d '*!' | postsuper -d -
 
 ELIMINA MESSAGGI DEFERRED
 postsuper -d deferred
