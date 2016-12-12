@@ -1,0 +1,26 @@
+# INSTALLAZIONE SCRIPT
+# installare prima EPEL Repo
+yum install certbot
+
+# CREAZIONE CERTIFICATO
+certbot certonly --webroot -w /var/www/example/ -d www.example.com -d example.com
+
+
+#CONFIGURAZIONE VIRTUALHOST HTTPS
+SSLEngine on
+SSLCertificateFile    /etc/letsencrypt/live/www.fermoweb.com/cert.pem
+SSLCertificateKeyFile /etc/letsencrypt/live/www.fermoweb.com/privkey.pem
+SSLCertificateChainFile /etc/letsencrypt/live/www.fermoweb.com/chain.pem
+
+<FilesMatch "\.(cgi|shtml|phtml|php)$">
+      SSLOptions +StdEnvVars
+</FilesMatch>
+
+BrowserMatch "MSIE [2-6]" \
+      nokeepalive ssl-unclean-shutdown \
+      downgrade-1.0 force-response-1.0
+BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
+
+#RINNOVO CERTIFICATI
+#da programmare con cron ogni giorno
+certbot renew --quiet
