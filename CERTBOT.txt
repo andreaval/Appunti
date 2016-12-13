@@ -1,25 +1,31 @@
 # INSTALLAZIONE SCRIPT
-# installare prima EPEL Repo
+yum install epel-release
+
+#CENTOS 7
 yum install certbot
+
+#CENTOS 6
+wget https://dl.eff.org/certbot-auto
+chmod a+x certbot-auto
 
 # CREAZIONE CERTIFICATO
 certbot certonly --webroot -w /var/www/example/ -d www.example.com -d example.com
 
 
 #CONFIGURAZIONE VIRTUALHOST HTTPS
-SSLEngine on
-SSLCertificateFile    /etc/letsencrypt/live/www.fermoweb.com/cert.pem
-SSLCertificateKeyFile /etc/letsencrypt/live/www.fermoweb.com/privkey.pem
-SSLCertificateChainFile /etc/letsencrypt/live/www.fermoweb.com/chain.pem
+    <IfModule mod_ssl.c>
+        SSLEngine on
+        SSLCertificateFile    /etc/letsencrypt/live/simplitmail.it/cert.pem
+        SSLCertificateKeyFile /etc/letsencrypt/live/simplitmail.it/privkey.pem
+        SSLCertificateChainFile /etc/letsencrypt/live/simplitmail.it/chain.pem
 
-<FilesMatch "\.(cgi|shtml|phtml|php)$">
-      SSLOptions +StdEnvVars
-</FilesMatch>
+        <FilesMatch "\.(cgi|shtml|phtml|php)$">
+            SSLOptions +StdEnvVars
+        </FilesMatch>
 
-BrowserMatch "MSIE [2-6]" \
-      nokeepalive ssl-unclean-shutdown \
-      downgrade-1.0 force-response-1.0
-BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
+        BrowserMatch "MSIE [2-6]" nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0
+        BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
+    </IfModule>
 
 #RINNOVO CERTIFICATI
 #da programmare con cron ogni giorno
