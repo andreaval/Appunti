@@ -1,0 +1,11 @@
+##CENTOS
+timedatectl set-timezone Europe/Rome #solo centos 7
+yum install ntp
+
+#centos 7
+systemctl enable ntpd
+systemctl start ntpd
+
+#centos 6
+chkconfig ntpd on
+systemctl start ntpd

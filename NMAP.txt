@@ -1,0 +1,29 @@
+//Indirizzi IP attivi in una rete
+nmap -sP 192.168.0.0/24
+
+//Scan for open ports
+nmap 192.168.1.2
+
+//TCP Syn and UDP Scan (requires root)
+nmap -sS -sU -PN localhost
+
+//Scan all ports
+nmap -sS -p 1-65535 localhost
+
+//identifica il S.O.
+nmap -O localhost
+
+//Aggressively Scan Hosts
+nmap -A -T4 localhost
+
+//LINUX connession tcp e udp attive
+netstat -tu
+
+//LINUX connession tcp senza risoluzione dns
+netstat -tn
+
+//WIN connessioni TCP e UDP attive
+netstat -an
+
+//WIN rilevamento malware
+netstat -b
