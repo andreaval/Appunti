@@ -25,6 +25,9 @@ VBoxManage clonevdi PATH_ORIGINALE_VDI PATH_COPIA_VDI
 #elenco dischi registrati
 VBoxManage list hdds
 
+#cambiare default VM folder
+VBoxManage setproperty machinefolder /home/virtualbox/
+
 
 ##CAMBIARE DIMENSIONE DISCO MACCHINA VIRTUALE
 ##PROCEDURA PER CENTOS 7
@@ -35,5 +38,11 @@ shutdown -r now
 mkfs.xfs -f /dev/sda3
 ssm add -p centos /dev/sda3
 ssm resize -s+9000M /dev/centos/root
+
+
+##RIPRISTINARE VM da file .vdi
+VBoxManage createvm --name FedoraTest --ostype Fedora_64 --register
+VBoxManage storagectl Demojef --name "IDE Controller" --add ide
+VBoxManage modifyvm Demojef --hda /path/to/hard_drive_image/FedoraTest.vdi
 
 
