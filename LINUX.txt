@@ -1,0 +1,3 @@
+#aggiungere una cartella alla variabile PATH per lanciare i comandi
+PATH=$PATH:/my/folder/
+export PATH
