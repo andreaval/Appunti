@@ -1,0 +1,43 @@
+#avviare container
+docker run -v /var/www/html:/var/www/html -d -p 8055:80 --name php55 andreaval/php:5.5-c7a24x32
+
+#avviare container semplice
+docker run -v /var/www/html/server_demojef:/var/www/html -t --name demojef jef/centos:7
+
+#avviare in background
+docker run —-detach -p 80:80 nomecontainer:versione
+
+#stoppa tutti i container
+docker stop $(docker ps -a -q)
+
+#rimuove tutti i container
+docker rm $(docker ps -a -q)
+
+#elenco container attivi
+docker ps
+
+#mapping porta
+docker port php56
+
+#compilazione container
+docker build -t andreaval/php:5.6-c7a24x32 .
+
+#elenco immagini compilate
+docker images
+
+#rimuovere immagini
+docker rmi b2804b863c52
+
+#entrare nella bash del container
+docker exec -it "7b63d8635ff3" bash
+
+#copiare un file dal container all'host
+docker cp 7b63d8635ff3:/etc/php.ini /usr/src/
+
+#informazioni sul container
+docker inspect 7b63d8635ff3
+
+#committare immagine su dockerhub
+docker login
+docker tag 2c0b58121e3c andreaval/php:5.6-c7a24x32
+docker push andreaval/php:5.6-c7a24x32
