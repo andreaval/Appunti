@@ -26,8 +26,15 @@ git push origin master
 
 == CREARE NUOVO PROGETTO ==
 git init
-git remote add origin https://github.com/andreaval/IFRAMEplus.git
+#oppure
+git clone URL_REPO
+git remote add origin URL_REPO
 
+== CAMBIARE REPO REMOTO ==
+git remote rename origin old_origin
+git remote add origin URL_REPO
+git push origin master
+git remote rm old_origin
 
 == STEP BASE ==
 cd dir_progetto
