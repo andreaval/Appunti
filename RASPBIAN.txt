@@ -1,0 +1,10 @@
+#nmap
+apt-get install nmap
+
+#cambio password utente pi
+passwd
+
+#cambio password root
+sudo passwd root
+
+

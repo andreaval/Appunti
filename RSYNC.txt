@@ -6,9 +6,10 @@ rsync -a username@remote_host:/home/username/dir1 place_to_sync_on_local_machine
 
 
 # l'opzione --delete cancella, nel destinatario, i files non più presenti nel sorgente
+# l’opzione —remove-sent-files elimina i files dal sorgente dopo il completamento del trasferimento
 
 
-#per salvare ssh key
-
-ssh-keygen
+#per abilitare la connessione tramite chiave pubblica
+#da fare nel server sorgente
+ssh-keygen -b 4096
 ssh-copy-id -i ~/.ssh/id_rsa.pub 192.168.0.34
