@@ -1,0 +1,13 @@
+== MIGRAZIONE DI UN REPOSITORY SVN AD UNO GIT SU BITBUCKET
+
+ 1) creare cartella di migrazione es. GitMigration
+ 2) cd GitMigration
+ 3) download script svn-migration-scripts.jar
+ 4) java -jar svn-migration-scripts.jar authors http://192.168.0.33/cod_comune > authors.txt
+ 5) modificare il file authors.txt 
+ 6) git svn clone --stdlayout --authors-file=authors.txt http://192.168.0.33/cod_ecommerce ecommerce
+ 7) cd ecommerce
+ 8) java -Dfile.encoding=utf-8 -jar ../svn-migration-scripts.jar clean-git --force
+ 9) git remote add origin git@bitbucket.org:avallorani/simplit-ecommerce.git
+10) git push -u origin --all
+11) git push --tags
